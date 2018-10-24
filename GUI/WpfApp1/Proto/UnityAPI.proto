@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package UnitiyAPI;
+
+enum CommandOpCode
+{
+	OBJECT_MANAGEMENT = 0;
+	CAMERA_CONTROL = 1;
+}
+
+message UnityGlobalCommand
+{
+	CommandOpCode op_code = 1;
+	ObjectManagement object_management = 2;
+	CameraView camera_view = 3;
+}
+
+
+enum CameraView
+{
+	 PLAN_VIEW = 0;
+	 FREE_LOOK = 1;
+}
+
+message ObjectManagement
+{
+	ObjectControlOpCode op_code = 1;
+	int32 object_type = 2;
+}
+
+enum ObjectControlOpCode
+{
+	ADD = 0;
+}
