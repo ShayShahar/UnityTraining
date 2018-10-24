@@ -2,3 +2,6 @@
 /GUI/WpfApp1/bin/
 /GUI/WpfApp1/obj/
 /GUI/WpfApp1/WpfApp1.csproj.user
+/GUI/Sources/bin/
+/GUI/Sources/obj/
+/GUI/Workspace/.vs/

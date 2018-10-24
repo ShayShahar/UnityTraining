@@ -6,10 +6,9 @@
 #region Designer generated code
 
 using pb = global::Google.Protobuf;
-using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
-using scg = global::System.Collections.Generic;
-namespace UnitiyAPI {
+
+namespace UnityUIWrapper.Messages {
 
   /// <summary>Holder for reflection information generated from UnityAPI.proto</summary>
   public static partial class UnityAPIReflection {
@@ -36,9 +35,9 @@ namespace UnitiyAPI {
             "cENvZGUSBwoDQUREEABiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::UnitiyAPI.CommandOpCode), typeof(global::UnitiyAPI.CameraView), typeof(global::UnitiyAPI.ObjectControlOpCode), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::UnitiyAPI.UnityGlobalCommand), global::UnitiyAPI.UnityGlobalCommand.Parser, new[]{ "OpCode", "ObjectManagement", "CameraView" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::UnitiyAPI.ObjectManagement), global::UnitiyAPI.ObjectManagement.Parser, new[]{ "OpCode", "ObjectType" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::UnityUIWrapper.Messages.CommandOpCode), typeof(global::UnityUIWrapper.Messages.CameraView), typeof(global::UnityUIWrapper.Messages.ObjectControlOpCode), }, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::UnityUIWrapper.Messages.UnityGlobalCommand), global::UnityUIWrapper.Messages.UnityGlobalCommand.Parser, new[]{ "OpCode", "ObjectManagement", "CameraView" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::UnityUIWrapper.Messages.ObjectManagement), global::UnityUIWrapper.Messages.ObjectManagement.Parser, new[]{ "OpCode", "ObjectType" }, null, null, null)
           }));
     }
     #endregion
@@ -70,7 +69,7 @@ namespace UnitiyAPI {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::UnitiyAPI.UnityAPIReflection.Descriptor.MessageTypes[0]; }
+      get { return global::UnityUIWrapper.Messages.UnityAPIReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -100,9 +99,9 @@ namespace UnitiyAPI {
 
     /// <summary>Field number for the "op_code" field.</summary>
     public const int OpCodeFieldNumber = 1;
-    private global::UnitiyAPI.CommandOpCode opCode_ = 0;
+    private global::UnityUIWrapper.Messages.CommandOpCode opCode_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::UnitiyAPI.CommandOpCode OpCode {
+    public global::UnityUIWrapper.Messages.CommandOpCode OpCode {
       get { return opCode_; }
       set {
         opCode_ = value;
@@ -111,9 +110,9 @@ namespace UnitiyAPI {
 
     /// <summary>Field number for the "object_management" field.</summary>
     public const int ObjectManagementFieldNumber = 2;
-    private global::UnitiyAPI.ObjectManagement objectManagement_;
+    private global::UnityUIWrapper.Messages.ObjectManagement objectManagement_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::UnitiyAPI.ObjectManagement ObjectManagement {
+    public global::UnityUIWrapper.Messages.ObjectManagement ObjectManagement {
       get { return objectManagement_; }
       set {
         objectManagement_ = value;
@@ -122,9 +121,9 @@ namespace UnitiyAPI {
 
     /// <summary>Field number for the "camera_view" field.</summary>
     public const int CameraViewFieldNumber = 3;
-    private global::UnitiyAPI.CameraView cameraView_ = 0;
+    private global::UnityUIWrapper.Messages.CameraView cameraView_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::UnitiyAPI.CameraView CameraView {
+    public global::UnityUIWrapper.Messages.CameraView CameraView {
       get { return cameraView_; }
       set {
         cameraView_ = value;
@@ -214,7 +213,7 @@ namespace UnitiyAPI {
       }
       if (other.objectManagement_ != null) {
         if (objectManagement_ == null) {
-          objectManagement_ = new global::UnitiyAPI.ObjectManagement();
+          objectManagement_ = new global::UnityUIWrapper.Messages.ObjectManagement();
         }
         ObjectManagement.MergeFrom(other.ObjectManagement);
       }
@@ -233,18 +232,18 @@ namespace UnitiyAPI {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            opCode_ = (global::UnitiyAPI.CommandOpCode) input.ReadEnum();
+            opCode_ = (global::UnityUIWrapper.Messages.CommandOpCode) input.ReadEnum();
             break;
           }
           case 18: {
             if (objectManagement_ == null) {
-              objectManagement_ = new global::UnitiyAPI.ObjectManagement();
+              objectManagement_ = new global::UnityUIWrapper.Messages.ObjectManagement();
             }
             input.ReadMessage(objectManagement_);
             break;
           }
           case 24: {
-            cameraView_ = (global::UnitiyAPI.CameraView) input.ReadEnum();
+            cameraView_ = (global::UnityUIWrapper.Messages.CameraView) input.ReadEnum();
             break;
           }
         }
@@ -261,7 +260,7 @@ namespace UnitiyAPI {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::UnitiyAPI.UnityAPIReflection.Descriptor.MessageTypes[1]; }
+      get { return global::UnityUIWrapper.Messages.UnityAPIReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -290,9 +289,9 @@ namespace UnitiyAPI {
 
     /// <summary>Field number for the "op_code" field.</summary>
     public const int OpCodeFieldNumber = 1;
-    private global::UnitiyAPI.ObjectControlOpCode opCode_ = 0;
+    private global::UnityUIWrapper.Messages.ObjectControlOpCode opCode_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::UnitiyAPI.ObjectControlOpCode OpCode {
+    public global::UnityUIWrapper.Messages.ObjectControlOpCode OpCode {
       get { return opCode_; }
       set {
         opCode_ = value;
@@ -397,7 +396,7 @@ namespace UnitiyAPI {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            opCode_ = (global::UnitiyAPI.ObjectControlOpCode) input.ReadEnum();
+            opCode_ = (global::UnityUIWrapper.Messages.ObjectControlOpCode) input.ReadEnum();
             break;
           }
           case 16: {
