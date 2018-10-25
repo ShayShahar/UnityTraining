@@ -1,0 +1,1 @@
+protoc -I=..\..\..\..\Sources\Proto --csharp_out=..\..\..\..\Sources\Messages ..\..\..\..\Sources\Proto\UnityAPI.proto

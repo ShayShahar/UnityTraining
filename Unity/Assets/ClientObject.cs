@@ -23,7 +23,7 @@ public class NetMqListener
         using (var subSocket = new SubscriberSocket())
         {
             subSocket.Options.ReceiveHighWatermark = 1000;
-            subSocket.Connect("tcp://localhost:12345");
+            subSocket.Connect("tcp://localhost:40000");
             subSocket.Subscribe("");
             while (!_listenerCancelled)
             {

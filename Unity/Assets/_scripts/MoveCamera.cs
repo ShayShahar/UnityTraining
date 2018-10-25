@@ -1,14 +1,12 @@
 using UnityEngine;
 using System.Collections;
-using Assets._scripts;
 using UnitiyAPI;
 using UnityEngine.UI;
 
 public class MoveCamera : MonoBehaviour
 {
-    private CommunicationHandler m_commHandler;
-    public ClientObject Client;
 
+    public ClientObject Client;
 
     public float turnSpeed = 2.0f;      // Speed of camera turning when mouse moves in along an axis
     public float panSpeed = 2.0f;       // Speed of the camera when being panned

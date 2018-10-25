@@ -28,17 +28,18 @@ namespace UnitiyAPI {
             "bW1hbmQSKQoHb3BfY29kZRgBIAEoDjIYLlVuaXRpeUFQSS5Db21tYW5kT3BD",
             "b2RlEjYKEW9iamVjdF9tYW5hZ2VtZW50GAIgASgLMhsuVW5pdGl5QVBJLk9i",
             "amVjdE1hbmFnZW1lbnQSKgoLY2FtZXJhX3ZpZXcYAyABKA4yFS5Vbml0aXlB",
-            "UEkuQ2FtZXJhVmlldyJYChBPYmplY3RNYW5hZ2VtZW50Ei8KB29wX2NvZGUY",
+            "UEkuQ2FtZXJhVmlldyJrChBPYmplY3RNYW5hZ2VtZW50Ei8KB29wX2NvZGUY",
             "ASABKA4yHi5Vbml0aXlBUEkuT2JqZWN0Q29udHJvbE9wQ29kZRITCgtvYmpl",
-            "Y3RfdHlwZRgCIAEoBSo6Cg1Db21tYW5kT3BDb2RlEhUKEU9CSkVDVF9NQU5B",
-            "R0VNRU5UEAASEgoOQ0FNRVJBX0NPTlRST0wQASoqCgpDYW1lcmFWaWV3Eg0K",
-            "CVBMQU5fVklFVxAAEg0KCUZSRUVfTE9PSxABKh4KE09iamVjdENvbnRyb2xP",
-            "cENvZGUSBwoDQUREEABiBnByb3RvMw=="));
+            "Y3RfdHlwZRgCIAEoBRIRCgloaWdobGlnaHQYAyABKAgqOgoNQ29tbWFuZE9w",
+            "Q29kZRIVChFPQkpFQ1RfTUFOQUdFTUVOVBAAEhIKDkNBTUVSQV9DT05UUk9M",
+            "EAEqKgoKQ2FtZXJhVmlldxINCglQTEFOX1ZJRVcQABINCglGUkVFX0xPT0sQ",
+            "ASo1ChNPYmplY3RDb250cm9sT3BDb2RlEgcKA0FERBAAEhUKEUhJR0hMSUdI",
+            "VF9PQkpFQ1RTEAFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::UnitiyAPI.CommandOpCode), typeof(global::UnitiyAPI.CameraView), typeof(global::UnitiyAPI.ObjectControlOpCode), }, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::UnitiyAPI.UnityGlobalCommand), global::UnitiyAPI.UnityGlobalCommand.Parser, new[]{ "OpCode", "ObjectManagement", "CameraView" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::UnitiyAPI.ObjectManagement), global::UnitiyAPI.ObjectManagement.Parser, new[]{ "OpCode", "ObjectType" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::UnitiyAPI.ObjectManagement), global::UnitiyAPI.ObjectManagement.Parser, new[]{ "OpCode", "ObjectType", "Highlight" }, null, null, null)
           }));
     }
     #endregion
@@ -57,6 +58,7 @@ namespace UnitiyAPI {
 
   public enum ObjectControlOpCode {
     [pbr::OriginalName("ADD")] Add = 0,
+    [pbr::OriginalName("HIGHLIGHT_OBJECTS")] HighlightObjects = 1,
   }
 
   #endregion
@@ -280,6 +282,7 @@ namespace UnitiyAPI {
     public ObjectManagement(ObjectManagement other) : this() {
       opCode_ = other.opCode_;
       objectType_ = other.objectType_;
+      highlight_ = other.highlight_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -310,6 +313,17 @@ namespace UnitiyAPI {
       }
     }
 
+    /// <summary>Field number for the "highlight" field.</summary>
+    public const int HighlightFieldNumber = 3;
+    private bool highlight_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Highlight {
+      get { return highlight_; }
+      set {
+        highlight_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as ObjectManagement);
@@ -325,6 +339,7 @@ namespace UnitiyAPI {
       }
       if (OpCode != other.OpCode) return false;
       if (ObjectType != other.ObjectType) return false;
+      if (Highlight != other.Highlight) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -333,6 +348,7 @@ namespace UnitiyAPI {
       int hash = 1;
       if (OpCode != 0) hash ^= OpCode.GetHashCode();
       if (ObjectType != 0) hash ^= ObjectType.GetHashCode();
+      if (Highlight != false) hash ^= Highlight.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -354,6 +370,10 @@ namespace UnitiyAPI {
         output.WriteRawTag(16);
         output.WriteInt32(ObjectType);
       }
+      if (Highlight != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(Highlight);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -367,6 +387,9 @@ namespace UnitiyAPI {
       }
       if (ObjectType != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(ObjectType);
+      }
+      if (Highlight != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -385,6 +408,9 @@ namespace UnitiyAPI {
       if (other.ObjectType != 0) {
         ObjectType = other.ObjectType;
       }
+      if (other.Highlight != false) {
+        Highlight = other.Highlight;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -402,6 +428,10 @@ namespace UnitiyAPI {
           }
           case 16: {
             ObjectType = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            Highlight = input.ReadBool();
             break;
           }
         }

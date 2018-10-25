@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
-using Assets._scripts;
 using UnitiyAPI;
 
 public class ObjectManager : MonoBehaviour
@@ -18,8 +17,13 @@ public class ObjectManager : MonoBehaviour
         public Button SelectionButton;
     }
 
+    class EntityType
+    {
+        public int TypeId { get; set; }
+        public GameObject ObjectType { get; set; }
+    }
+
     public ClientObject Client;
-    private CommunicationHandler m_commHandler;
 
     public GameObject TankObject;
     public GameObject HaloPref;
@@ -43,22 +47,17 @@ public class ObjectManager : MonoBehaviour
     private List<RouteData> m_routeList;
     private List<Vector3> m_currentRoute;
 
+    private bool m_markEntities;
+
  //   private GameObject m_panel;
 
     //private bool m_testStarted;
-
-    public ObjectManager()
-    {
-        //m_commHandler = CommunicationHandler.GetInstance();
-        //m_commHandler.ObjectCommandReceivedEvent += onObjectCommandReceivedEvent;
-    }
 
     // Use this for initialization
     void Start()
     {
         m_mainCamera = Camera.main;
-
-
+        Client.ObjectCommandReceivedEvent += onObjectCommandReceivedEvent;
 
         m_tanksList = new List<GameObjectData>();
         // m_tank.onClick.AddListener(onAddTank);
@@ -80,7 +79,11 @@ public class ObjectManager : MonoBehaviour
         switch (p_obj.OpCode)
         {
             case ObjectControlOpCode.Add:
+                //check type here
                 onAddTank();
+                break;
+            case ObjectControlOpCode.HighlightObjects:
+                m_markEntities = p_obj.Highlight;
                 break;
         }
     }
@@ -89,9 +92,9 @@ public class ObjectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //handleObjectAddition();
-        //handleObjectSelection();
-    //    updateMarkers(MarkEntities.isOn);
+        handleObjectAddition();
+        handleObjectSelection();
+        updateMarkers(m_markEntities);
         // objectScaling(CameraModeDt.value == 2);
         //testMovment();
     }

@@ -6,9 +6,10 @@
 #region Designer generated code
 
 using pb = global::Google.Protobuf;
+using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
-
-namespace UnityUIWrapper.Messages {
+using scg = global::System.Collections.Generic;
+namespace UnitiyAPI {
 
   /// <summary>Holder for reflection information generated from UnityAPI.proto</summary>
   public static partial class UnityAPIReflection {
@@ -27,17 +28,18 @@ namespace UnityUIWrapper.Messages {
             "bW1hbmQSKQoHb3BfY29kZRgBIAEoDjIYLlVuaXRpeUFQSS5Db21tYW5kT3BD",
             "b2RlEjYKEW9iamVjdF9tYW5hZ2VtZW50GAIgASgLMhsuVW5pdGl5QVBJLk9i",
             "amVjdE1hbmFnZW1lbnQSKgoLY2FtZXJhX3ZpZXcYAyABKA4yFS5Vbml0aXlB",
-            "UEkuQ2FtZXJhVmlldyJYChBPYmplY3RNYW5hZ2VtZW50Ei8KB29wX2NvZGUY",
+            "UEkuQ2FtZXJhVmlldyJrChBPYmplY3RNYW5hZ2VtZW50Ei8KB29wX2NvZGUY",
             "ASABKA4yHi5Vbml0aXlBUEkuT2JqZWN0Q29udHJvbE9wQ29kZRITCgtvYmpl",
-            "Y3RfdHlwZRgCIAEoBSo6Cg1Db21tYW5kT3BDb2RlEhUKEU9CSkVDVF9NQU5B",
-            "R0VNRU5UEAASEgoOQ0FNRVJBX0NPTlRST0wQASoqCgpDYW1lcmFWaWV3Eg0K",
-            "CVBMQU5fVklFVxAAEg0KCUZSRUVfTE9PSxABKh4KE09iamVjdENvbnRyb2xP",
-            "cENvZGUSBwoDQUREEABiBnByb3RvMw=="));
+            "Y3RfdHlwZRgCIAEoBRIRCgloaWdobGlnaHQYAyABKAgqOgoNQ29tbWFuZE9w",
+            "Q29kZRIVChFPQkpFQ1RfTUFOQUdFTUVOVBAAEhIKDkNBTUVSQV9DT05UUk9M",
+            "EAEqKgoKQ2FtZXJhVmlldxINCglQTEFOX1ZJRVcQABINCglGUkVFX0xPT0sQ",
+            "ASo1ChNPYmplY3RDb250cm9sT3BDb2RlEgcKA0FERBAAEhUKEUhJR0hMSUdI",
+            "VF9PQkpFQ1RTEAFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::UnityUIWrapper.Messages.CommandOpCode), typeof(global::UnityUIWrapper.Messages.CameraView), typeof(global::UnityUIWrapper.Messages.ObjectControlOpCode), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::UnityUIWrapper.Messages.UnityGlobalCommand), global::UnityUIWrapper.Messages.UnityGlobalCommand.Parser, new[]{ "OpCode", "ObjectManagement", "CameraView" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::UnityUIWrapper.Messages.ObjectManagement), global::UnityUIWrapper.Messages.ObjectManagement.Parser, new[]{ "OpCode", "ObjectType" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::UnitiyAPI.CommandOpCode), typeof(global::UnitiyAPI.CameraView), typeof(global::UnitiyAPI.ObjectControlOpCode), }, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::UnitiyAPI.UnityGlobalCommand), global::UnitiyAPI.UnityGlobalCommand.Parser, new[]{ "OpCode", "ObjectManagement", "CameraView" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::UnitiyAPI.ObjectManagement), global::UnitiyAPI.ObjectManagement.Parser, new[]{ "OpCode", "ObjectType", "Highlight" }, null, null, null)
           }));
     }
     #endregion
@@ -56,6 +58,7 @@ namespace UnityUIWrapper.Messages {
 
   public enum ObjectControlOpCode {
     [pbr::OriginalName("ADD")] Add = 0,
+    [pbr::OriginalName("HIGHLIGHT_OBJECTS")] HighlightObjects = 1,
   }
 
   #endregion
@@ -69,7 +72,7 @@ namespace UnityUIWrapper.Messages {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::UnityUIWrapper.Messages.UnityAPIReflection.Descriptor.MessageTypes[0]; }
+      get { return global::UnitiyAPI.UnityAPIReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -99,9 +102,9 @@ namespace UnityUIWrapper.Messages {
 
     /// <summary>Field number for the "op_code" field.</summary>
     public const int OpCodeFieldNumber = 1;
-    private global::UnityUIWrapper.Messages.CommandOpCode opCode_ = 0;
+    private global::UnitiyAPI.CommandOpCode opCode_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::UnityUIWrapper.Messages.CommandOpCode OpCode {
+    public global::UnitiyAPI.CommandOpCode OpCode {
       get { return opCode_; }
       set {
         opCode_ = value;
@@ -110,9 +113,9 @@ namespace UnityUIWrapper.Messages {
 
     /// <summary>Field number for the "object_management" field.</summary>
     public const int ObjectManagementFieldNumber = 2;
-    private global::UnityUIWrapper.Messages.ObjectManagement objectManagement_;
+    private global::UnitiyAPI.ObjectManagement objectManagement_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::UnityUIWrapper.Messages.ObjectManagement ObjectManagement {
+    public global::UnitiyAPI.ObjectManagement ObjectManagement {
       get { return objectManagement_; }
       set {
         objectManagement_ = value;
@@ -121,9 +124,9 @@ namespace UnityUIWrapper.Messages {
 
     /// <summary>Field number for the "camera_view" field.</summary>
     public const int CameraViewFieldNumber = 3;
-    private global::UnityUIWrapper.Messages.CameraView cameraView_ = 0;
+    private global::UnitiyAPI.CameraView cameraView_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::UnityUIWrapper.Messages.CameraView CameraView {
+    public global::UnitiyAPI.CameraView CameraView {
       get { return cameraView_; }
       set {
         cameraView_ = value;
@@ -213,7 +216,7 @@ namespace UnityUIWrapper.Messages {
       }
       if (other.objectManagement_ != null) {
         if (objectManagement_ == null) {
-          objectManagement_ = new global::UnityUIWrapper.Messages.ObjectManagement();
+          objectManagement_ = new global::UnitiyAPI.ObjectManagement();
         }
         ObjectManagement.MergeFrom(other.ObjectManagement);
       }
@@ -232,18 +235,18 @@ namespace UnityUIWrapper.Messages {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            opCode_ = (global::UnityUIWrapper.Messages.CommandOpCode) input.ReadEnum();
+            opCode_ = (global::UnitiyAPI.CommandOpCode) input.ReadEnum();
             break;
           }
           case 18: {
             if (objectManagement_ == null) {
-              objectManagement_ = new global::UnityUIWrapper.Messages.ObjectManagement();
+              objectManagement_ = new global::UnitiyAPI.ObjectManagement();
             }
             input.ReadMessage(objectManagement_);
             break;
           }
           case 24: {
-            cameraView_ = (global::UnityUIWrapper.Messages.CameraView) input.ReadEnum();
+            cameraView_ = (global::UnitiyAPI.CameraView) input.ReadEnum();
             break;
           }
         }
@@ -260,7 +263,7 @@ namespace UnityUIWrapper.Messages {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::UnityUIWrapper.Messages.UnityAPIReflection.Descriptor.MessageTypes[1]; }
+      get { return global::UnitiyAPI.UnityAPIReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -279,6 +282,7 @@ namespace UnityUIWrapper.Messages {
     public ObjectManagement(ObjectManagement other) : this() {
       opCode_ = other.opCode_;
       objectType_ = other.objectType_;
+      highlight_ = other.highlight_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -289,9 +293,9 @@ namespace UnityUIWrapper.Messages {
 
     /// <summary>Field number for the "op_code" field.</summary>
     public const int OpCodeFieldNumber = 1;
-    private global::UnityUIWrapper.Messages.ObjectControlOpCode opCode_ = 0;
+    private global::UnitiyAPI.ObjectControlOpCode opCode_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::UnityUIWrapper.Messages.ObjectControlOpCode OpCode {
+    public global::UnitiyAPI.ObjectControlOpCode OpCode {
       get { return opCode_; }
       set {
         opCode_ = value;
@@ -306,6 +310,17 @@ namespace UnityUIWrapper.Messages {
       get { return objectType_; }
       set {
         objectType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "highlight" field.</summary>
+    public const int HighlightFieldNumber = 3;
+    private bool highlight_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Highlight {
+      get { return highlight_; }
+      set {
+        highlight_ = value;
       }
     }
 
@@ -324,6 +339,7 @@ namespace UnityUIWrapper.Messages {
       }
       if (OpCode != other.OpCode) return false;
       if (ObjectType != other.ObjectType) return false;
+      if (Highlight != other.Highlight) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -332,6 +348,7 @@ namespace UnityUIWrapper.Messages {
       int hash = 1;
       if (OpCode != 0) hash ^= OpCode.GetHashCode();
       if (ObjectType != 0) hash ^= ObjectType.GetHashCode();
+      if (Highlight != false) hash ^= Highlight.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -353,6 +370,10 @@ namespace UnityUIWrapper.Messages {
         output.WriteRawTag(16);
         output.WriteInt32(ObjectType);
       }
+      if (Highlight != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(Highlight);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -366,6 +387,9 @@ namespace UnityUIWrapper.Messages {
       }
       if (ObjectType != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(ObjectType);
+      }
+      if (Highlight != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -384,6 +408,9 @@ namespace UnityUIWrapper.Messages {
       if (other.ObjectType != 0) {
         ObjectType = other.ObjectType;
       }
+      if (other.Highlight != false) {
+        Highlight = other.Highlight;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -396,11 +423,15 @@ namespace UnityUIWrapper.Messages {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            opCode_ = (global::UnityUIWrapper.Messages.ObjectControlOpCode) input.ReadEnum();
+            opCode_ = (global::UnitiyAPI.ObjectControlOpCode) input.ReadEnum();
             break;
           }
           case 16: {
             ObjectType = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            Highlight = input.ReadBool();
             break;
           }
         }

@@ -15,7 +15,6 @@ message UnityGlobalCommand
 	CameraView camera_view = 3;
 }
 
-
 enum CameraView
 {
 	 PLAN_VIEW = 0;
@@ -26,9 +25,11 @@ message ObjectManagement
 {
 	ObjectControlOpCode op_code = 1;
 	int32 object_type = 2;
+	bool highlight = 3;
 }
 
 enum ObjectControlOpCode
 {
 	ADD = 0;
+	HIGHLIGHT_OBJECTS = 1;
 }
