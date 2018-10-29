@@ -16,8 +16,6 @@ namespace Assets._scripts
             public GameObject m_marker;
             public bool IsSelected;
             public GameObject m_selection;
-            public GameObject ListItem;
-            public Button SelectionButton;
         }
 
         class UnityEntityType
