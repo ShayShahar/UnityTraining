@@ -20,10 +20,11 @@ public class ObjectManager : MonoBehaviour
         public Button SelectionButton;
     }
 
-    class EntityType
+    class UnityEntityType
     {
         public int TypeId { get; set; }
         public GameObject ObjectType { get; set; }
+        public EntityType EsType { get; set; }
     }
 
     public ClientObject Client;
@@ -32,12 +33,7 @@ public class ObjectManager : MonoBehaviour
     public GameObject HaloPref;
     public GameObject WaypointObj;
     public GameObject HaloSelected;
-    //public UnityEngine.UI.Toggle MarkEntities;
-    // public Dropdown CameraModeDt;
-   // public GameObject ListItemPrefab;
-    //public GameObject ContentPanel;
- //   private Button m_tank;
-   // private Button m_createRouteBtn;
+
     private bool m_putTank = false;
     private bool m_createRoute = false;
     public RouteDisplay routeDisplayPrefab;
@@ -45,7 +41,6 @@ public class ObjectManager : MonoBehaviour
     private int m_currentInsdex = 0;
     private EspduSender m_disSender;
 
- //   private int m_scaleValue = 10;
     private Camera m_mainCamera;
     private List<GameObjectData> m_tanksList;
     private List<RouteData> m_routeList;
@@ -53,27 +48,22 @@ public class ObjectManager : MonoBehaviour
 
     private bool m_markEntities;
 
- //   private GameObject m_panel;
-
-    //private bool m_testStarted;
 
     // Use this for initialization
     void Start()
     {
         m_mainCamera = Camera.main;
+
+        //register incoming messages events
         Client.ObjectCommandReceivedEvent += onObjectCommandReceivedEvent;
         Client.TacticalCommandReceivedEvent += onTacticalCommandReceivedEvent;
+
+
         m_tanksList = new List<GameObjectData>();
-        // m_tank.onClick.AddListener(onAddTank);
         m_disSender = new EspduSender(1, 1, 1);
-        //m_createRouteBtn = GameObject.Find("CreateRouteBtn").GetComponent<Button>();
         m_routeList = new List<RouteData>();
         m_currentRoute = new List<Vector3>();
-        //m_createRouteBtn.onClick.AddListener(onCreateRoute);
 
-        //m_panel = GameObject.Find("ObjectPanelList");
-        //UnityEngine.Experimental.UIElements.ListView lv = new UnityEngine.Experimental.UIElements.ListView();
-        //lv.itemsSource = m_tanksList;
     }
 
     private void onTacticalCommandReceivedEvent(TacticalObjectManagement p_obj)

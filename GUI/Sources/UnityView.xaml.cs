@@ -14,7 +14,7 @@ namespace UnityUIWrapper
             InitializeComponent();
 
             //-possibly -other 
-            //UnityContainer.Children.Add(new UnityHwndHost("New Unity Project (2).exe", "-arguments"));  
+            UnityContainer.Children.Add(new UnityHwndHost("New Unity Project (2).exe", "-arguments"));  
         }
     }
 }
