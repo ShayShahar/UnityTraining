@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Net;
 using System.Net.Sockets;
-using OpenDis.Core;
-using OpenDis.Dis1998;
+using DIS1998net;
+using DISnet;
+using DISnet.DataStreamUtilities;
 
 namespace Assets._scripts
 {
@@ -17,6 +18,7 @@ namespace Assets._scripts
         private ushort m_site;
         private ushort m_appId;
         private byte m_exId;
+        private byte m_disVersion;
 
         private static void MulticastOptionProperties()
         {
@@ -141,11 +143,12 @@ namespace Assets._scripts
             }
         }
 
-        public EspduSender(ushort p_site, ushort p_applicationId, byte p_exerciseId)
+        public EspduSender(ushort p_site, ushort p_applicationId, byte p_exerciseId, byte p_disVersion)
         {
             m_site = p_site;
             m_exId = p_exerciseId;
             m_appId = p_applicationId;
+            m_disVersion = p_disVersion;
         }
 
         public void PublishEntityState(ushort p_id, EntityType p_type, Vector3Double p_location, Orientation p_orientation, Vector3Float p_velocity)
@@ -154,7 +157,8 @@ namespace Assets._scripts
             mcastPort = 62040;
             broadcastPort = 62040;  //3000 for DisMapper default
             EntityStatePdu espdu = new EntityStatePdu();  //Could use factory but easier this way
-            
+            espdu.setProtocolVersion(m_disVersion);
+
             //Alcatraz
             double lat = 37.827;
             double lon = -122.425;
@@ -218,8 +222,9 @@ namespace Assets._scripts
             //    Console.ReadLine();
             //}
 
-            DataOutputStream dos = new DataOutputStream(Endian.Big);
-            espdu.MarshalAutoLengthSet(dos);
+            DataOutputStream dos = new DataOutputStream(EndianTypes.Endian.BIG);
+            espdu.marshalAutoLengthSet(dos);
+         //   espdu.MarshalAutoLengthSet(dos);
 
             // Transmit broadcast messages
             SendMessages(dos.ConvertToBytes());
