@@ -6,6 +6,7 @@ enum CommandOpCode
 {
 	OBJECT_MANAGEMENT = 0;
 	CAMERA_CONTROL = 1;
+	TACTICAL_OBJECT = 2;
 }
 
 message UnityGlobalCommand
@@ -13,6 +14,7 @@ message UnityGlobalCommand
 	CommandOpCode op_code = 1;
 	ObjectManagement object_management = 2;
 	CameraView camera_view = 3;
+	TacticalObjectManagement tactical_object_management = 4;
 }
 
 enum CameraView
@@ -28,8 +30,18 @@ message ObjectManagement
 	bool highlight = 3;
 }
 
+message TacticalObjectManagement
+{
+	TacticalObjectOpCode op_code = 1;
+}
+
 enum ObjectControlOpCode
 {
 	ADD = 0;
 	HIGHLIGHT_OBJECTS = 1;
+}
+
+enum TacticalObjectOpCode
+{
+	CREATE_ROUTE = 0;
 }

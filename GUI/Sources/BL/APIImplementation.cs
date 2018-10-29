@@ -57,6 +57,17 @@ namespace UnityUIWrapper.BL
 
         }
 
+        internal void CreateRoute()
+        {
+            var builder = new UnityGlobalCommand
+            {
+                OpCode = CommandOpCode.TacticalObject,
+                TacticalObjectManagement = new TacticalObjectManagement {OpCode = TacticalObjectOpCode.CreateRoute}
+            };
+
+            m_commHandler.Send(builder.ToByteArray());
+        }
+
         public void SetCameraView(CameraView p_view)
         {
             var builder = new UnityGlobalCommand();

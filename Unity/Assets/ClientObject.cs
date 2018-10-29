@@ -78,9 +78,11 @@ public class ClientObject : MonoBehaviour
 
     public delegate void ObjectCommandReceived(ObjectManagement p_obj);
     public delegate void CameraControlCommandReceived(CameraView p_obj);
+    public delegate void TacticalCommandReceived(TacticalObjectManagement p_obj);
 
     public event ObjectCommandReceived ObjectCommandReceivedEvent;
     public event CameraControlCommandReceived CameraControlCommandReceivedEvent;
+    public event TacticalCommandReceived TacticalCommandReceivedEvent;
 
     private void HandleMessage(byte[] message)
     {
@@ -99,6 +101,12 @@ public class ClientObject : MonoBehaviour
                 if (ObjectCommandReceivedEvent != null)
                 {
                     ObjectCommandReceivedEvent.Invoke(msg.ObjectManagement);
+                }
+                break;
+            case CommandOpCode.TacticalObject:
+                if (TacticalCommandReceivedEvent != null)
+                {
+                    TacticalCommandReceivedEvent.Invoke(msg.TacticalObjectManagement);
                 }
                 break;
         }

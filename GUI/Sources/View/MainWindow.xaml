@@ -8,6 +8,7 @@
         xmlns:converters="clr-namespace:UnityUIWrapper.Converters"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
+                WindowState="Maximized"
         DataContext="{Binding Main, Source={StaticResource Locator}}"
         Title="Unity Test UI" Height="450" Width="800">
    
@@ -71,6 +72,7 @@
                               ItemsSource="{Binding CameraViewTypes, Mode=OneTime}" 
                               ToolTip="Select Camera"/>
                     <CheckBox Content="Highlight Entities" IsChecked="{Binding HighlightEntities}"></CheckBox>
+                    <Button Command="{Binding CreateRouteCommand, Mode=OneTime}" Margin="10,5,5,5" Content="Create Route"></Button>
                 </StackPanel>
             </Grid>
             <GridSplitter Grid.Column="1" Grid.Row="1" Width="3" HorizontalAlignment="Stretch"></GridSplitter>

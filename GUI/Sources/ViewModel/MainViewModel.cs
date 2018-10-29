@@ -1,8 +1,10 @@
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Reactive;
 using System.Reactive.Linq;
+using System.Windows.Input;
 using UnitiyAPI;
 using UnityUIWrapper.BL;
 using UnityUIWrapper.Model;
@@ -12,6 +14,8 @@ namespace UnityUIWrapper.ViewModel
     public class MainViewModel : ViewModelBase
     {
         private DataState m_state;
+        private APIImplementation m_api;
+
 
         public List<string> CameraViewTypes { get; set; }
 
@@ -19,6 +23,7 @@ namespace UnityUIWrapper.ViewModel
         {
             m_state = DataState.Instance;
             m_state.PropertyUpdatedEvent.ObserveOnDispatcher().Subscribe(onPropertyUpdate);
+            m_api = APIImplementation.Instance;
 
             CameraViewTypes = new List<string>() { "Plan View", "Free Look" };
         }
@@ -41,6 +46,20 @@ namespace UnityUIWrapper.ViewModel
             RaisePropertyChanged(() => ObjectTypeList);
             RaisePropertyChanged(() => HighlightEntities);
             RaisePropertyChanged(() => SelectedCameraView);
+        }
+
+
+        public ICommand CreateRouteCommand
+        {
+            get
+            {
+                return new RelayCommand(onCreateRoute, () => true);
+            }
+        }
+
+        private void onCreateRoute()
+        {
+            m_api.CreateRoute();
         }
 
         public string SelectedCameraView

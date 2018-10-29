@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using Assets._scripts;
+using OpenDis.Dis1998;
 using UnitiyAPI;
+using Orientation = OpenDis.Dis1998.Orientation;
 
 public class ObjectManager : MonoBehaviour
 {
@@ -40,6 +43,7 @@ public class ObjectManager : MonoBehaviour
     public RouteDisplay routeDisplayPrefab;
 
     private int m_currentInsdex = 0;
+    private EspduSender m_disSender;
 
  //   private int m_scaleValue = 10;
     private Camera m_mainCamera;
@@ -58,10 +62,10 @@ public class ObjectManager : MonoBehaviour
     {
         m_mainCamera = Camera.main;
         Client.ObjectCommandReceivedEvent += onObjectCommandReceivedEvent;
-
+        Client.TacticalCommandReceivedEvent += onTacticalCommandReceivedEvent;
         m_tanksList = new List<GameObjectData>();
         // m_tank.onClick.AddListener(onAddTank);
-
+        m_disSender = new EspduSender(1, 1, 1);
         //m_createRouteBtn = GameObject.Find("CreateRouteBtn").GetComponent<Button>();
         m_routeList = new List<RouteData>();
         m_currentRoute = new List<Vector3>();
@@ -70,8 +74,17 @@ public class ObjectManager : MonoBehaviour
         //m_panel = GameObject.Find("ObjectPanelList");
         //UnityEngine.Experimental.UIElements.ListView lv = new UnityEngine.Experimental.UIElements.ListView();
         //lv.itemsSource = m_tanksList;
+    }
 
+    private void onTacticalCommandReceivedEvent(TacticalObjectManagement p_obj)
+    {
+        switch (p_obj.OpCode)
+        {
+            case TacticalObjectOpCode.CreateRoute:
+                onCreateRoute();
+                break;
 
+        }
     }
 
     private void onObjectCommandReceivedEvent(ObjectManagement p_obj)
@@ -88,7 +101,48 @@ public class ObjectManager : MonoBehaviour
         }
     }
 
+    private void publishEntities()
+    {
+        foreach (var tank in m_tanksList)
+        {
+            var type = new OpenDis.Dis1998.EntityType
+            {
+                EntityKind = 1,    
+                Country = 255,    
+                Domain = 1,     
+                Category = 1,      
+                Subcategory = 1,   
+                Specific = 3,
+                Extra = 1
+            };
 
+            var location = new Vector3Double
+            {
+                X = tank.m_object.transform.localPosition.x,
+                Y = tank.m_object.transform.localPosition.z,
+                Z = tank.m_object.transform.localPosition.y,
+            };
+
+            var orient = new Orientation
+            {
+                Phi = tank.m_object.transform.eulerAngles.x,
+                Psi = tank.m_object.transform.eulerAngles.z,
+                Theta = tank.m_object.transform.eulerAngles.y,
+            };
+
+            var rb = tank.m_object.GetComponent<Rigidbody>();
+
+            var vel = new Vector3Float
+            {
+                X = rb.velocity.x,
+                Y = rb.velocity.z,
+                Z = rb.velocity.y,
+            };
+
+            m_disSender.PublishEntityState((ushort)m_tanksList.IndexOf(tank), type, location, orient, vel);
+        }
+    }
+    
     // Update is called once per frame
     void Update()
     {
@@ -96,7 +150,8 @@ public class ObjectManager : MonoBehaviour
         handleObjectSelection();
         updateMarkers(m_markEntities);
         // objectScaling(CameraModeDt.value == 2);
-        //testMovment();
+        testMovment();
+        publishEntities();
     }
 
     void testMovment()
